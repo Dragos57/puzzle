@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proiect Multimedia Dragos Stroe</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            init(document);
+        });
+
+        window.addEventListener("resize", myFunction);
+        function myFunction() {
+            adjustOffset();
+        }
+    </script>
+</head>
+<body>
+<div id="all-content">
+    <h1>Drag and Drop image to solve custom puzzle</h1>
+
+    <div>
+        <canvas id="myCanvas" width="708" height="400" style="position:relative;" onmousedown="mouseDown(event)"
+                onmouseup="mouseUp(event)" onmousemove="mouseMove(event)" onmouseout="mouseOut(event)"
+                ondragover="evtPreventDefault(event)" ondrop="onCanvasDrop(event)">I am canvas
+        </canvas>
+    </div>
+
+    <div id="controls">
+        <!--<input id="changeDifficulty" type="range" min="2" max="8" value="3" step="1"/>-->
+        <input id="difficulty" type="number" name="quantity" min="2" max="15" step="1" size="1" value="3">
+        <button id="changeDifficulty">Change Difficulty</button>
+        <button id="solve">Solve Puzzle</button>
+        <button id="switchAudio">Sound: ON</button>
+
+        <audio id="pieceHoldSource">
+            <source src="audio/pieceHold.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="pieceReleasedSource">
+            <source src="audio/pieceReleased.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="puzzleFinishedSource">
+            <source src="audio/win.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="solvedBackgroundSong">
+            <source src="audio/solvedBackgroundSong.mp3" type="audio/mp3">
+        </audio>
+    </div>
+</div>
+
+</body>
+
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+<script type="text/javascript" src="js/model.js"></script>
+<script type="text/javascript" src="libs/libs.js"></script>
+
+</html>
